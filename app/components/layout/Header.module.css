@@ -1,0 +1,646 @@
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  background-color: rgba(15, 76, 129, 0.4);
+  backdrop-filter: blur(16px);
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.header::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, var(--color-primary) 0%, var(--color-secondary) 50%, var(--color-accent) 100%);
+  opacity: 0.5;
+  transition: opacity 0.3s ease;
+}
+
+.header.scrolled::before {
+  opacity: 1;
+}
+
+.header.scrolled {
+  background-color: rgba(255, 255, 255, 0.98);
+  box-shadow: 0 2px 24px rgba(15, 76, 129, 0.08), 0 1px 0 rgba(226, 232, 240, 0.5);
+  border-bottom-color: rgba(226, 232, 240, 0.8);
+  padding-top: 0.625rem;
+  padding-bottom: 0.625rem;
+}
+
+.header:not(.scrolled) {
+  padding-top: 0.875rem;
+  padding-bottom: 0.875rem;
+}
+
+/* Solid background for non-homepage - higher specificity */
+.header.solidBg {
+  background-color: rgba(255, 255, 255, 0.98);
+  box-shadow: 0 2px 24px rgba(15, 76, 129, 0.08);
+  border-bottom-color: rgba(226, 232, 240, 0.8);
+}
+
+.header.solidBg:not(.scrolled) .logoTitle {
+  background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-secondary) 100%);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.header.solidBg:not(.scrolled) .logoSubtitle {
+  color: var(--color-accent);
+}
+
+.header.solidBg:not(.scrolled) .navLink {
+  color: var(--color-text-primary);
+}
+
+.header.solidBg:not(.scrolled) .navLink::before {
+  background: linear-gradient(90deg, var(--color-primary), var(--color-secondary));
+}
+
+.header.solidBg:not(.scrolled) .navLink:hover {
+  color: var(--color-primary);
+  background-color: rgba(15, 76, 129, 0.05);
+}
+
+.header.solidBg:not(.scrolled) .menuButton {
+  color: var(--color-primary);
+  background: rgba(15, 76, 129, 0.05);
+  border-color: rgba(15, 76, 129, 0.1);
+}
+
+.header.solidBg:not(.scrolled) .menuButton:hover {
+  background-color: rgba(15, 76, 129, 0.1);
+  border-color: var(--color-primary);
+}
+
+.container {
+  max-width: 90rem;
+  margin: 0 auto;
+  padding-left: 1.5rem;
+  padding-right: 1.5rem;
+}
+
+@media (min-width: 640px) {
+  .container {
+    padding-left: 2rem;
+    padding-right: 2rem;
+  }
+}
+
+@media (min-width: 1280px) {
+  .container {
+    padding-left: 3rem;
+    padding-right: 3rem;
+  }
+}
+
+.headerContent {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 2rem;
+}
+
+/* Logo Styles */
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  transition: transform 0.3s ease, opacity 0.3s ease;
+  position: relative;
+  z-index: 10;
+}
+
+.logo:hover {
+  transform: translateY(-1px);
+  opacity: 0.85;
+}
+
+.logoCrown {
+  color: var(--color-accent);
+  flex-shrink: 0;
+  filter: drop-shadow(0 2px 4px rgba(212, 175, 55, 0.3));
+  width: 40px;
+  height: 40px;
+}
+
+@media (min-width: 768px) {
+  .logoCrown {
+    width: 48px;
+    height: 48px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .logoCrown {
+    width: 55px;
+    height: 55px;
+  }
+}
+
+.logoText {
+  display: flex;
+  flex-direction: column;
+  gap: 0.125rem;
+}
+
+.logoTitle {
+  font-size: 1.75rem;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-secondary) 100%);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  line-height: 1.2;
+  position: relative;
+  font-family: var(--font-playfair), Georgia, serif;
+  transition: all 0.3s ease;
+}
+
+.header:not(.scrolled) .logoTitle {
+  background: linear-gradient(135deg, #ffffff 0%, rgba(255, 255, 255, 0.9) 100%);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+@media (min-width: 768px) {
+  .logoTitle {
+    font-size: 2rem;
+  }
+}
+
+.logoSubtitle {
+  font-size: 0.625rem;
+  letter-spacing: 0.05em;
+  color: var(--color-accent);
+  text-transform: uppercase;
+  font-weight: 600;
+  transition: color 0.3s ease;
+}
+
+.header:not(.scrolled) .logoSubtitle {
+  color: rgba(212, 175, 55, 1);
+}
+
+@media (min-width: 768px) {
+  .logoSubtitle {
+    font-size: 0.7rem;
+  }
+}
+
+/* Desktop Navigation */
+.nav {
+  display: none;
+  align-items: center;
+  gap: 0.5rem;
+  flex: 1;
+  justify-content: center;
+}
+
+@media (min-width: 1024px) {
+  .nav {
+    display: flex;
+  }
+}
+
+.navLink {
+  position: relative;
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--color-text-primary);
+  padding: 0.625rem 1rem;
+  border-radius: 0.5rem;
+  transition: all 0.3s ease;
+  letter-spacing: -0.01em;
+  display: flex;
+  align-items: center;
+}
+
+.header:not(.scrolled) .navLink {
+  color: rgba(255, 255, 255, 0.95);
+}
+
+.navLink::before {
+  content: '';
+  position: absolute;
+  bottom: 0.25rem;
+  left: 50%;
+  transform: translateX(-50%) scaleX(0);
+  width: 80%;
+  height: 2px;
+  background: linear-gradient(90deg, var(--color-primary), var(--color-secondary));
+  transition: transform 0.3s ease;
+  border-radius: 2px;
+}
+
+.header:not(.scrolled) .navLink::before {
+  background: linear-gradient(90deg, var(--color-accent), rgba(212, 175, 55, 0.8));
+}
+
+.navLink:hover {
+  color: var(--color-primary);
+  background-color: rgba(15, 76, 129, 0.05);
+}
+
+.header:not(.scrolled) .navLink:hover {
+  color: var(--color-accent);
+  background-color: rgba(255, 255, 255, 0.15);
+}
+
+.navLink:hover::before {
+  transform: translateX(-50%) scaleX(1);
+}
+
+.navLink:active {
+  transform: scale(0.98);
+}
+
+/* Active Nav Link State */
+.navLink.active {
+  color: var(--color-primary);
+  background-color: rgba(15, 76, 129, 0.08);
+}
+
+.header:not(.scrolled) .navLink.active {
+  color: var(--color-accent);
+  background-color: rgba(255, 255, 255, 0.2);
+}
+
+.navLink.active::before {
+  transform: translateX(-50%) scaleX(1);
+}
+
+/* Dropdown Menu */
+.dropdown {
+  position: relative;
+}
+
+.chevron {
+  margin-left: 0.25rem;
+  transition: transform 0.3s ease;
+  flex-shrink: 0;
+}
+
+.dropdown:hover .chevron {
+  transform: rotate(180deg);
+}
+
+.dropdown::after {
+  content: '';
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  height: 0.5rem;
+  background: transparent;
+}
+
+.dropdownMenu {
+  position: absolute;
+  top: calc(100% + 0.5rem);
+  left: 0;
+  min-width: 280px;
+  background: white;
+  border: 1px solid var(--color-border);
+  border-radius: 0.75rem;
+  box-shadow: 0 8px 24px rgba(15, 76, 129, 0.15);
+  padding: 0.5rem;
+  z-index: 100;
+  animation: dropdownSlide 0.2s ease;
+}
+
+@keyframes dropdownSlide {
+  from {
+    opacity: 0;
+    transform: translateY(-8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.dropdownItem {
+  display: block;
+  padding: 0.75rem 1rem;
+  font-size: 0.9375rem;
+  font-weight: 500;
+  color: var(--color-text-primary);
+  border-radius: 0.5rem;
+  transition: all 0.2s ease;
+  white-space: nowrap;
+}
+
+.dropdownItem:hover {
+  background: var(--color-bg-light);
+  color: var(--color-primary);
+  transform: translateX(4px);
+}
+
+.dropdownItemActive {
+  background: rgba(15, 76, 129, 0.1);
+  color: var(--color-primary);
+  font-weight: 600;
+  border-left: 3px solid var(--color-primary);
+  padding-left: calc(1rem - 3px);
+}
+
+/* Contact Button - Desktop */
+.contactButton {
+  display: none;
+  align-items: center;
+  gap: 0.625rem;
+  padding: 0.75rem 1.75rem;
+  border-radius: 0.625rem;
+  font-weight: 600;
+  font-size: 0.95rem;
+  background: linear-gradient(135deg, var(--color-accent) 0%, var(--color-accent-hover) 100%);
+  color: #ffffff;
+  border: none;
+  box-shadow: 0 4px 12px rgba(212, 175, 55, 0.25);
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+@media (min-width: 1024px) {
+  .contactButton {
+    display: flex;
+  }
+}
+
+.contactButton svg {
+  transition: transform 0.3s ease;
+}
+
+.contactButton:hover svg {
+  transform: rotate(-15deg) scale(1.1);
+}
+
+.contactButton::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+  transition: left 0.5s ease;
+}
+
+.contactButton:hover::before {
+  left: 100%;
+}
+
+.contactButton:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(212, 175, 55, 0.35);
+}
+
+.contactButton:active {
+  transform: translateY(0);
+}
+
+/* Mobile Menu Button */
+.menuButton {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.625rem;
+  border-radius: 0.625rem;
+  color: var(--color-primary);
+  background: rgba(15, 76, 129, 0.05);
+  border: 2px solid rgba(15, 76, 129, 0.1);
+  transition: all 0.3s ease;
+  position: relative;
+  z-index: 1001;
+}
+
+.header:not(.scrolled) .menuButton {
+  color: rgba(255, 255, 255, 0.95);
+  background: rgba(255, 255, 255, 0.15);
+  border-color: rgba(255, 255, 255, 0.2);
+}
+
+@media (min-width: 1024px) {
+  .menuButton {
+    display: none;
+  }
+}
+
+.menuButton:hover {
+  background-color: rgba(15, 76, 129, 0.1);
+  border-color: var(--color-primary);
+  transform: scale(1.05);
+}
+
+.header:not(.scrolled) .menuButton:hover {
+  background-color: rgba(255, 255, 255, 0.25);
+  border-color: var(--color-accent);
+}
+
+.menuButton:active {
+  transform: scale(0.95);
+}
+
+/* Mobile Menu */
+.mobileMenu {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  background: linear-gradient(135deg, rgba(15, 76, 129, 0.97) 0%, rgba(8, 45, 77, 0.97) 100%);
+  backdrop-filter: blur(20px);
+  z-index: 999;
+  animation: slideDown 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15);
+  border-bottom-left-radius: 1rem;
+  border-bottom-right-radius: 1rem;
+  max-height: calc(100vh - 6rem);
+  overflow-y: auto;
+}
+
+@media (min-width: 1024px) {
+  .mobileMenu {
+    display: none;
+  }
+}
+
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.mobileNav {
+  display: flex;
+  flex-direction: column;
+  gap: 0.875rem;
+  padding: 1.5rem;
+}
+
+.mobileNavLink {
+  padding: 1.125rem 1.5rem;
+  border-radius: 0.875rem;
+  font-size: 1.125rem;
+  font-weight: 600;
+  color: #ffffff;
+  background: rgba(255, 255, 255, 0.12);
+  border: 1.5px solid rgba(255, 255, 255, 0.25);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  text-align: center;
+  backdrop-filter: blur(10px);
+  letter-spacing: 0.01em;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+}
+
+.mobileNavLink:hover {
+  background: rgba(255, 255, 255, 0.22);
+  transform: translateY(-2px);
+  border-color: rgba(212, 175, 55, 0.6);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
+}
+
+.mobileNavLink:active {
+  transform: translateY(0);
+}
+
+.mobileNavLinkActive {
+  background: rgba(212, 175, 55, 0.25);
+  border-color: var(--color-accent);
+  font-weight: 700;
+}
+
+/* Mobile Dropdown */
+.mobileDropdown {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  position: relative;
+}
+
+.mobileDropdownToggle {
+  position: absolute;
+  right: 1rem;
+  top: 1rem;
+  padding: 0.5rem;
+  background: rgba(255, 255, 255, 0.15);
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  border-radius: 0.5rem;
+  color: #ffffff;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1;
+}
+
+.mobileDropdownToggle:hover {
+  background: rgba(255, 255, 255, 0.25);
+  border-color: rgba(212, 175, 55, 0.5);
+}
+
+.mobileChevron {
+  transition: transform 0.3s ease;
+  flex-shrink: 0;
+}
+
+.mobileChevronOpen {
+  transform: rotate(180deg);
+}
+
+.mobileDropdownMenu {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  padding-left: 0.5rem;
+  animation: slideDown 0.2s ease;
+}
+
+.mobileDropdownItem {
+  padding: 0.875rem 1.25rem;
+  border-radius: 0.75rem;
+  font-size: 1rem;
+  font-weight: 500;
+  color: rgba(255, 255, 255, 0.9);
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  transition: all 0.3s ease;
+  text-align: left;
+}
+
+.mobileDropdownItem:hover {
+  background: rgba(255, 255, 255, 0.15);
+  color: #ffffff;
+  border-color: rgba(212, 175, 55, 0.4);
+  transform: translateX(4px);
+}
+
+.mobileDropdownItemActive {
+  background: rgba(212, 175, 55, 0.2);
+  border-color: var(--color-accent);
+  color: #ffffff;
+  font-weight: 600;
+  border-left: 3px solid var(--color-accent);
+  padding-left: calc(1.25rem - 3px);
+}
+
+.mobileContactButton {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+  padding: 1.125rem 1.5rem;
+  margin-top: 1rem;
+  border-radius: 0.75rem;
+  font-weight: 700;
+  font-size: 1.125rem;
+  background: linear-gradient(135deg, var(--color-accent) 0%, var(--color-accent-hover) 100%);
+  color: #ffffff;
+  border: none;
+  box-shadow: 0 8px 24px rgba(212, 175, 55, 0.3);
+  transition: all 0.3s ease;
+}
+
+.mobileContactButton:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 32px rgba(212, 175, 55, 0.4);
+}
+
+.mobileContactButton:active {
+  transform: translateY(-2px);
+}
+
+/* Smooth animations */
+@media (prefers-reduced-motion: reduce) {
+  .header,
+  .logo,
+  .navLink,
+  .contactButton,
+  .menuButton,
+  .mobileMenu,
+  .mobileNavLink,
+  .mobileContactButton {
+    transition: none;
+    animation: none;
+  }
+}

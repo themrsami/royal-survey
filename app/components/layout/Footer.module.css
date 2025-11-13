@@ -1,0 +1,272 @@
+.footer {
+  background: linear-gradient(135deg, var(--color-primary) 0%, rgba(8, 45, 77, 0.95) 100%);
+  color: #ffffff;
+  position: relative;
+  overflow: hidden;
+}
+
+.footer::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, var(--color-accent) 0%, var(--color-secondary) 50%, var(--color-accent) 100%);
+}
+
+.container {
+  max-width: 85rem;
+  margin: 0 auto;
+  padding: 3.5rem 1.5rem 1.5rem;
+}
+
+@media (min-width: 640px) {
+  .container {
+    padding-left: 2rem;
+    padding-right: 2rem;
+  }
+}
+
+@media (min-width: 1280px) {
+  .container {
+    padding-left: 3rem;
+    padding-right: 3rem;
+  }
+}
+
+/* Top Section - 4 Columns */
+.topSection {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2.5rem;
+  padding-bottom: 2.5rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+}
+
+@media (min-width: 640px) {
+  .topSection {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 1024px) {
+  .topSection {
+    grid-template-columns: 1.5fr 1fr 1fr 1.2fr;
+    gap: 3rem;
+  }
+}
+
+.column {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+/* Logo Section */
+.logo {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.logoTitle {
+  font-size: 1.875rem;
+  font-weight: 800;
+  letter-spacing: -0.025em;
+  background: linear-gradient(135deg, #ffffff 0%, var(--color-accent) 100%);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.logoTagline {
+  font-size: 0.75rem;
+  letter-spacing: 0.05em;
+  color: var(--color-accent);
+  text-transform: uppercase;
+  font-weight: 600;
+}
+
+.description {
+  font-size: 0.95rem;
+  line-height: 1.6;
+  color: rgba(255, 255, 255, 0.8);
+  margin-top: 0.5rem;
+}
+
+/* Column Titles */
+.columnTitle {
+  font-size: 1.125rem;
+  font-weight: 700;
+  color: #ffffff;
+  margin-bottom: 0.25rem;
+  position: relative;
+  padding-bottom: 0.75rem;
+}
+
+.columnTitle::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 2.5rem;
+  height: 3px;
+  background: var(--color-accent);
+  border-radius: 2px;
+}
+
+/* Link Lists */
+.linkList {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.link {
+  font-size: 0.95rem;
+  color: rgba(255, 255, 255, 0.8);
+  transition: all 0.3s ease;
+  position: relative;
+  padding-left: 0;
+  width: fit-content;
+}
+
+.link::before {
+  content: '';
+  position: absolute;
+  left: -1rem;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 0;
+  height: 2px;
+  background: var(--color-accent);
+  transition: width 0.3s ease;
+}
+
+.link:hover {
+  color: #ffffff;
+  padding-left: 1rem;
+}
+
+.link:hover::before {
+  width: 0.625rem;
+}
+
+.linkAll {
+  font-size: 0.95rem;
+  color: var(--color-accent);
+  font-weight: 600;
+  margin-top: 0.5rem;
+  transition: all 0.3s ease;
+  width: fit-content;
+}
+
+.linkAll:hover {
+  color: var(--color-accent-hover);
+  transform: translateX(4px);
+}
+
+/* Contact List */
+.contactList {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.contactItem {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.875rem;
+  font-size: 0.95rem;
+  color: rgba(255, 255, 255, 0.8);
+  transition: all 0.3s ease;
+}
+
+.contactItem svg {
+  flex-shrink: 0;
+  margin-top: 0.125rem;
+  color: var(--color-accent);
+}
+
+.contactItem:hover {
+  color: #ffffff;
+  transform: translateX(4px);
+}
+
+a.contactItem:hover svg {
+  transform: scale(1.1);
+}
+
+/* Bottom Section */
+.bottomSection {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  padding-top: 2rem;
+  font-size: 0.875rem;
+  color: rgba(255, 255, 255, 0.7);
+}
+
+@media (min-width: 768px) {
+  .bottomSection {
+    flex-direction: row;
+    justify-content: space-between;
+  }
+}
+
+.copyright {
+  text-align: center;
+}
+
+@media (min-width: 768px) {
+  .copyright {
+    text-align: left;
+  }
+}
+
+.bottomLinks {
+  display: flex;
+  gap: 1.5rem;
+}
+
+.bottomLink {
+  color: rgba(255, 255, 255, 0.7);
+  transition: color 0.3s ease;
+  position: relative;
+}
+
+.bottomLink::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 0;
+  height: 1px;
+  background: var(--color-accent);
+  transition: width 0.3s ease;
+}
+
+.bottomLink:hover {
+  color: #ffffff;
+}
+
+.bottomLink:hover::after {
+  width: 100%;
+}
+
+/* Smooth animations */
+@media (prefers-reduced-motion: reduce) {
+  .link,
+  .linkAll,
+  .contactItem,
+  .bottomLink {
+    transition: none;
+  }
+  
+  .link::before,
+  .bottomLink::after {
+    transition: none;
+  }
+}

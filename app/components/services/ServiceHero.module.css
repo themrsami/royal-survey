@@ -1,0 +1,145 @@
+.hero {
+  position: relative;
+  min-height: 450px;
+  display: flex;
+  align-items: center;
+  padding: 12rem 0 6rem;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+.hero.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.imageWrapper {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+}
+
+.backgroundImage {
+  object-fit: cover;
+}
+
+.overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    135deg,
+    rgba(15, 76, 129, 0.75) 0%,
+    rgba(8, 45, 77, 0.7) 50%,
+    rgba(14, 123, 144, 0.65) 100%
+  );
+  z-index: 1;
+}
+
+.content {
+  position: relative;
+  z-index: 2;
+  max-width: 800px;
+}
+
+.breadcrumb {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 2rem;
+  flex-wrap: wrap;
+}
+
+.breadcrumbLink {
+  display: flex;
+  align-items: center;
+  gap: 0.375rem;
+  color: rgba(255, 255, 255, 0.8);
+  font-size: 0.875rem;
+  transition: color 0.3s ease;
+}
+
+.breadcrumbLink:hover {
+  color: var(--color-accent);
+}
+
+.breadcrumbSeparator {
+  color: rgba(255, 255, 255, 0.5);
+}
+
+.breadcrumbCurrent {
+  color: rgba(255, 255, 255, 1);
+  font-size: 0.875rem;
+  font-weight: 600;
+}
+
+.title {
+  font-size: 3rem;
+  font-weight: 700;
+  color: white;
+  margin-bottom: 1.5rem;
+  font-family: var(--font-playfair);
+  line-height: 1.2;
+  animation: slideUp 0.8s ease 0.2s both;
+}
+
+.description {
+  font-size: 1.25rem;
+  line-height: 1.7;
+  color: rgba(255, 255, 255, 0.95);
+  animation: slideUp 0.8s ease 0.4s both;
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+  .hero {
+    min-height: 400px;
+    padding: 10rem 0 5rem;
+  }
+
+  .title {
+    font-size: 2.5rem;
+  }
+
+  .description {
+    font-size: 1.125rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .hero {
+    min-height: 350px;
+    padding: 9rem 0 4rem;
+  }
+
+  .title {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+  }
+
+  .description {
+    font-size: 1rem;
+    line-height: 1.6;
+  }
+
+  .breadcrumb {
+    margin-bottom: 1.5rem;
+    font-size: 0.8125rem;
+  }
+
+  .breadcrumbLink,
+  .breadcrumbCurrent {
+    font-size: 0.8125rem;
+  }
+}

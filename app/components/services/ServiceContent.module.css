@@ -1,0 +1,247 @@
+.content {
+  padding: 6rem 0;
+  background: var(--color-bg-white);
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+.content.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.grid {
+  display: grid;
+  gap: 5rem;
+}
+
+.section {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.sectionTitle {
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--color-primary);
+  font-family: var(--font-playfair);
+  position: relative;
+  padding-bottom: 0.75rem;
+}
+
+.sectionTitle::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 80px;
+  height: 4px;
+  background: linear-gradient(90deg, var(--color-primary), var(--color-accent));
+  border-radius: 2px;
+}
+
+.overview {
+  font-size: 1.125rem;
+  line-height: 1.8;
+  color: var(--color-text-secondary);
+  text-align: justify;
+}
+
+/* Features */
+.featureList {
+  display: grid;
+  gap: 1rem;
+  list-style: none;
+}
+
+.featureItem {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.75rem;
+  padding: 1rem 1.25rem;
+  background: var(--color-bg-light);
+  border: 1px solid var(--color-border);
+  border-radius: 0.5rem;
+  transition: all 0.3s ease;
+  font-size: 1rem;
+  color: var(--color-text-secondary);
+}
+
+.featureItem:hover {
+  background: var(--color-bg-white);
+  border-color: var(--color-primary);
+  transform: translateX(8px);
+  box-shadow: 0 4px 12px rgba(15, 76, 129, 0.1);
+}
+
+.featureIcon {
+  color: var(--color-accent);
+  flex-shrink: 0;
+  margin-top: 0.125rem;
+}
+
+/* Process */
+.processList {
+  display: grid;
+  gap: 1.5rem;
+}
+
+.processStep {
+  display: flex;
+  align-items: flex-start;
+  gap: 1.5rem;
+  padding: 1.5rem;
+  background: var(--color-bg-light);
+  border: 1px solid var(--color-border);
+  border-radius: 0.75rem;
+  transition: all 0.3s ease;
+}
+
+.processStep:hover {
+  background: var(--color-bg-white);
+  border-color: var(--color-primary);
+  box-shadow: 0 6px 20px rgba(15, 76, 129, 0.1);
+  transform: translateY(-4px);
+}
+
+.stepNumber {
+  flex-shrink: 0;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-secondary) 100%);
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  font-size: 1.125rem;
+}
+
+.stepContent {
+  font-size: 1rem;
+  line-height: 1.6;
+  color: var(--color-text-secondary);
+  padding-top: 0.5rem;
+}
+
+/* Equipment */
+.equipmentGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
+}
+
+.equipmentCard {
+  background: var(--color-bg-light);
+  border: 1px solid var(--color-border);
+  border-radius: 0.75rem;
+  padding: 2rem 1.5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 1rem;
+  transition: all 0.3s ease;
+}
+
+.equipmentCard:hover {
+  background: var(--color-bg-white);
+  border-color: var(--color-primary);
+  box-shadow: 0 8px 24px rgba(15, 76, 129, 0.12);
+  transform: translateY(-4px);
+}
+
+.equipmentIcon {
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-secondary) 100%);
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.3s ease;
+}
+
+.equipmentCard:hover .equipmentIcon {
+  transform: scale(1.1);
+}
+
+.equipmentName {
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--color-text-primary);
+  line-height: 1.4;
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+  .equipmentGrid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .content {
+    padding: 4rem 0;
+  }
+
+  .grid {
+    gap: 3rem;
+  }
+
+  .section {
+    gap: 1.5rem;
+  }
+
+  .sectionTitle {
+    font-size: 1.75rem;
+  }
+
+  .overview {
+    font-size: 1rem;
+    line-height: 1.7;
+  }
+
+  .featureItem {
+    padding: 0.875rem 1rem;
+    font-size: 0.9375rem;
+  }
+
+  .processStep {
+    gap: 1rem;
+    padding: 1.25rem;
+  }
+
+  .stepNumber {
+    width: 36px;
+    height: 36px;
+    font-size: 1rem;
+  }
+
+  .stepContent {
+    font-size: 0.9375rem;
+  }
+
+  .equipmentGrid {
+    grid-template-columns: 1fr;
+    gap: 1.25rem;
+  }
+
+  .equipmentCard {
+    padding: 1.5rem 1.25rem;
+  }
+
+  .equipmentIcon {
+    width: 60px;
+    height: 60px;
+  }
+
+  .equipmentName {
+    font-size: 0.9375rem;
+  }
+}
