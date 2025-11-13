@@ -3,8 +3,9 @@
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import { Menu, X, Phone, Crown, ChevronDown } from 'lucide-react';
+import { Menu, X, Phone, ChevronDown } from 'lucide-react';
 import { NAV_LINKS, COMPANY_INFO, SERVICES } from '@/app/lib/constants';
+import Image from 'next/image';
 import styles from './Header.module.css';
 
 export default function Header() {
@@ -44,7 +45,13 @@ export default function Header() {
       <div className={styles.container}>
         <div className={styles.headerContent}>
           <Link href="/" className={styles.logo}>
-            <Crown className={styles.logoCrown} />
+            <Image 
+              src="/icon.svg" 
+              alt="Royal Survey" 
+              width={50} 
+              height={50} 
+              className={styles.logoIcon}
+            />
             <div className={styles.logoText}>
               <span className={styles.logoTitle}>Royal Survey</span>
               <span className={styles.logoSubtitle}>Precision in Every Measurement</span>

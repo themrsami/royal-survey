@@ -124,23 +124,23 @@
   opacity: 0.85;
 }
 
-.logoCrown {
-  color: var(--color-accent);
+.logoIcon {
   flex-shrink: 0;
-  filter: drop-shadow(0 2px 4px rgba(212, 175, 55, 0.3));
   width: 40px;
   height: 40px;
+  border-radius: 6px;
+  transition: all 0.3s ease;
 }
 
 @media (min-width: 768px) {
-  .logoCrown {
+  .logoIcon {
     width: 48px;
     height: 48px;
   }
 }
 
 @media (min-width: 1024px) {
-  .logoCrown {
+  .logoIcon {
     width: 55px;
     height: 55px;
   }
