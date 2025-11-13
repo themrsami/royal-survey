@@ -56,15 +56,22 @@
   padding: 2.5rem 2rem;
   background: var(--color-bg-white);
   border: 1px solid var(--color-border);
-  border-radius: 0.75rem;
+  border-radius: 1rem;
   opacity: 0;
   transform: translateY(20px);
-  transition: all 0.6s ease;
+  transition: all 0.3s ease;
 }
 
 .card.visible {
   opacity: 1;
   transform: translateY(0);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.card.visible:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 24px rgba(15, 76, 129, 0.12);
+  border-color: var(--color-primary);
 }
 
 @media (max-width: 1023px) {
@@ -89,10 +96,22 @@
   justify-content: center;
   background: linear-gradient(135deg, rgba(15, 76, 129, 0.08) 0%, rgba(30, 123, 155, 0.08) 100%);
   border-radius: 0.75rem;
+  transition: all 0.3s ease;
+}
+
+.card:hover .iconWrapper {
+  background: var(--color-primary);
+  transform: scale(1.05);
+  box-shadow: 0 6px 16px rgba(15, 76, 129, 0.2);
 }
 
 .icon {
   color: var(--color-primary);
+  transition: color 0.3s ease;
+}
+
+.card:hover .icon {
+  color: white;
 }
 
 @media (max-width: 768px) {
