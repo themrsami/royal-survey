@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import Image from 'next/image';
 import { Phone, Mail, Clock, MapPin } from 'lucide-react';
 import { COMPANY_INFO, NAV_LINKS, SERVICES } from '@/app/lib/constants';
 import styles from './Footer.module.css';
@@ -13,8 +14,17 @@ export default function Footer() {
           {/* Company Info */}
           <div className={styles.column}>
             <div className={styles.logo}>
-              <h3 className={styles.logoTitle}>Royal Survey</h3>
-              <p className={styles.logoTagline}>{COMPANY_INFO.tagline}</p>
+              <Image 
+                src="/logo.webp" 
+                alt="Royal Survey" 
+                width={48} 
+                height={48} 
+                className={styles.logoImage}
+              />
+              <div>
+                <h3 className={styles.logoTitle}>Royal Survey</h3>
+                <p className={styles.logoTagline}>{COMPANY_INFO.tagline}</p>
+              </div>
             </div>
             <p className={styles.description}>
               Professional land surveying services delivering precision and accuracy for your projects across the UAE.

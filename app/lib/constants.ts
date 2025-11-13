@@ -9,7 +9,7 @@ export const COMPANY_INFO = {
   tagline: 'Precision in Every Measurement',
   phone: '+971 50 1718389',
   email: 'Info@royalsurvey.com',
-  workingHours: 'Sunday - Thursday: 8:00 AM - 6:00 PM',
+  workingHours: 'Monday to Saturday: 08:00 AM to 05:00 PM',
 } as const;
 
 // Navigation Links

@@ -46,10 +46,10 @@ export default function Header() {
         <div className={styles.headerContent}>
           <Link href="/" className={styles.logo}>
             <Image 
-              src="/icon.svg" 
+              src="/logo.webp" 
               alt="Royal Survey" 
-              width={50} 
-              height={50} 
+              width={40} 
+              height={40} 
               className={styles.logoIcon}
             />
             <div className={styles.logoText}>

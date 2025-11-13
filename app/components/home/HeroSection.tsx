@@ -66,7 +66,7 @@ export default function HeroSection() {
           <div className={styles.stats}>
             <div className={styles.stat}>
               <div className={styles.statNumber}>15+</div>
-              <div className={styles.statLabel}>Years Experience</div>
+              <div className={styles.statLabel}>Team of experts with 15+ years of experience</div>
             </div>
             <div className={styles.stat}>
               <div className={styles.statNumber}>500+</div>

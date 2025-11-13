@@ -9,29 +9,14 @@ import styles from './CompanyStory.module.css';
 
 const MILESTONES = [
   {
-    year: '2010',
+    year: '2024',
     title: 'Company Founded',
     description: 'Royal Survey established with a vision to provide precision surveying services',
   },
   {
-    year: '2015',
-    title: 'Expanded Services',
-    description: 'Added advanced underground utilities detection and bathymetric surveys',
-  },
-  {
-    year: '2018',
-    title: 'Technology Upgrade',
-    description: 'Invested in state-of-the-art GPS/GNSS systems and GIS software',
-  },
-  {
-    year: '2020',
-    title: '500+ Projects',
-    description: 'Reached milestone of 500 completed projects across UAE',
-  },
-  {
-    year: '2024',
-    title: 'Industry Leader',
-    description: 'Recognized as a premier land surveying firm in the region',
+    year: '2025',
+    title: 'Expanding Operations',
+    description: 'Growing our team and expanding services across UAE with cutting-edge technology',
   },
 ];
 

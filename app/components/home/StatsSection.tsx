@@ -9,7 +9,7 @@ const STATS = [
   {
     id: 'experience',
     value: 15,
-    label: 'Years of Experience',
+    label: 'Team of experts with 15+ years of experience',
     suffix: '+',
     icon: Award,
   },

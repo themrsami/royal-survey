@@ -100,7 +100,7 @@ export default function AboutSection() {
             <div className={styles.statsCard}>
               <div className={styles.statsItem}>
                 <div className={styles.statsNumber}>15+</div>
-                <div className={styles.statsLabel}>Years Experience</div>
+                <div className={styles.statsLabel}>Team of experts with 15+ years of experience</div>
               </div>
               <div className={styles.statsDivider}></div>
               <div className={styles.statsItem}>
